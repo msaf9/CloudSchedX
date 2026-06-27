@@ -27,7 +27,7 @@ import org.cloudbus.cloudsim.provisioners.PeProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
 
 import coms.project.attack.AttackSimulator;
-import coms.project.attack.CryptoUtils;
+import coms.project.attack.privacy.CryptoUtils;
 import coms.project.monitor.AccessControl;
 import coms.project.monitor.PrivacyMonitor;
 import coms.project.monitor.SecurityMonitor;

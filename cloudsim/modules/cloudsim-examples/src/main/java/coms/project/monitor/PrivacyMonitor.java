@@ -5,7 +5,7 @@ import java.util.List;
 import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.Log;
 
-import coms.project.attack.CryptoUtils;
+import coms.project.attack.privacy.CryptoUtils;
 
 /**
  * PrivacyMonitor tracks potential privacy violations in cloud simulations:

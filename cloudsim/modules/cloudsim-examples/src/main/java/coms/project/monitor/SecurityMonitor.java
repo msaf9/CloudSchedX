@@ -7,7 +7,7 @@ import java.util.Map;
 import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.Log;
 
-import coms.project.attack.CryptoUtils;
+import coms.project.attack.privacy.CryptoUtils;
 
 /**
  * SecurityMonitor provides runtime security checks on cloud workload behavior:

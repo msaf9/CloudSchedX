@@ -30,8 +30,9 @@ import org.cloudbus.cloudsim.provisioners.BwProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.PeProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
 
-import coms.project.attack.AttackSimulator;
-import coms.project.attack.CryptoUtils;
+import coms.project.attack.privacy.CryptoUtils;
+import coms.project.attack.privacy.PrivacyAttackSimulator;
+import coms.project.attack.security.SecurityAttackSimulator;
 import coms.project.monitor.AccessControl;
 import coms.project.monitor.PrivacyMonitor;
 import coms.project.monitor.SecurityMonitor;
@@ -87,13 +88,18 @@ public class CloudSimMaxMinSecure {
             cloudletList = createCloudlet(brokerId, 40);
 
             // Encrypt VM metadata
-            AttackSimulator.encryptVMLocalMetadata(vmlist);
+//            AttackSimulator.encryptVMLocalMetadata(vmlist);
+            PrivacyAttackSimulator.encryptVMLocalMetadata(vmlist);
 
             // Simulate attacks
-            AttackSimulator.simulateDoS(broker, 30);
-            AttackSimulator.simulatePoisoning(cloudletList);
-            AttackSimulator.simulateDataLeakageEncrypted(vmlist);
-            AttackSimulator.simulateTimingAnalysis(broker);
+//            AttackSimulator.simulateDoS(broker, 30);
+//            AttackSimulator.simulatePoisoning(cloudletList);
+//            AttackSimulator.simulateDataLeakageEncrypted(vmlist);
+//            AttackSimulator.simulateTimingAnalysis(broker);
+            SecurityAttackSimulator.simulateDoS(broker, 30);
+            SecurityAttackSimulator.simulatePoisoning(cloudletList);
+            PrivacyAttackSimulator.simulateDataLeakageEncrypted(vmlist);
+            PrivacyAttackSimulator.simulateTimingAnalysis(broker);
 
             // Enforce quotas
             if (cloudletList.size() > MAX_CLOUDLETS) {
@@ -132,8 +138,9 @@ public class CloudSimMaxMinSecure {
             SecurityMonitor.checkWorkloadDistribution(results, threshold);
             SecurityMonitor.checkPrivacyLeaksEncrypted(results);
 
-            // Inference attack
-            AttackSimulator.simulateInferenceAttack(results);
+            // Inference attack (Privacy)
+//            AttackSimulator.simulateInferenceAttack(results);
+            PrivacyAttackSimulator.simulateInferenceAttack(results);
 
             // Privacy analysis
             PrivacyMonitor.checkIOLarge(results);
